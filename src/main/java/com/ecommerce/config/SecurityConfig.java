@@ -25,6 +25,24 @@ public class SecurityConfig {
     private final AuthenticationProvider authenticationProvider;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
+    private final String[] WHITE_LIST = {
+            "/*/auth/**",
+            "/api/user/password/forgot",
+            "/api/user/password/reset",
+
+            "/v2/api-docs",
+            "/v3/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui/**",
+            "/webjars/**",
+            "/swagger-ui.html",
+
+            "/api/demo/**"
+    };
     @Bean
     SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
         http
@@ -32,22 +50,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         auth -> auth
-                                .requestMatchers(
-                                        "/*/auth/**",
-                                        "/api/user/password/forgot",
-                                        "/api/user/password/reset",
-
-                                        "/v2/api-docs",
-                                        "/v3/api-docs",
-                                        "/v3/api-docs/**",
-                                        "/swagger-resources",
-                                        "/swagger-resources/**",
-                                        "/configuration/ui",
-                                        "/configuration/security",
-                                        "/swagger-ui/**",
-                                        "/webjars/**",
-                                        "/swagger-ui.html"
-                                    ).permitAll()
+                                .requestMatchers(WHITE_LIST)
+                                    .permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/product/**")
                                     .permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/enquiry")

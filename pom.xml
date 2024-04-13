@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ecommerce</groupId>
-	<artifactId>E-Commerce</artifactId>
+	<artifactId>e-commerce-backend</artifactId>
 	<version>1.0</version>
 	<name>E-Commerce</name>
 	<description>E-Commerce webiste's RESTful API</description>

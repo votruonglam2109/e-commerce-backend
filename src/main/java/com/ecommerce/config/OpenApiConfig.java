@@ -23,11 +23,11 @@ import org.springframework.context.annotation.Configuration;
         ),
         servers = {
                 @Server(
-                        description = "LOCAL ENV",
-                        url = "http://localhost:8080"
+                        description = "PROD ENV",
+                        url = "http://ec2-54-179-75-46.ap-southeast-1.compute.amazonaws.com"
                 ),
                 @Server(
-                        description = "PROD ENV",
+                        description = "LOCAL ENV",
                         url = "http://localhost:8080"
                 )
         }
